@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.android.contact.ui.fragment.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_groups"
+            app:destination="@id/navigation_groups" />
+        <action
+            android:id="@+id/action_navigation_home_to_personalFragment"
+            app:destination="@id/naviagion_persona" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_all_contact"
+        android:name="com.example.android.contact.ui.fragment.AllContactFragment"
+        android:label="@string/all_contacts"
+        tools:layout="@layout/fragment_all_contacts" >
+        <action
+            android:id="@+id/action_navigation_all_contact_to_navigation_addContact"
+            app:destination="@id/navigation_addContact" />
+        <action
+            android:id="@+id/action_navigation_all_contact_to_navigation_view_contact"
+            app:destination="@id/navigation_view_contact" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_addContact"
+        android:name="com.example.android.contact.ui.fragment.AddContactFragment"
+        android:label="Add Contact"
+        tools:layout="@layout/fragment_add_contact" >
+        <action
+            android:id="@+id/action_navigation_addContact_to_navigation_all_contact"
+            app:destination="@id/navigation_all_contact" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_view_contact"
+        android:name="com.example.android.contact.ui.fragment.ViewContactFragment"
+        android:label="Contact"
+        tools:layout="@layout/fragment_view_contact" >
+        <action
+            android:id="@+id/action_viewContactFragment_to_navigation_contact"
+            app:destination="@id/navigation_all_contact" />
+        <argument
+            android:name="currentContact"
+            app:argType="com.example.android.contact.db.Contact" />
+        <action
+            android:id="@+id/action_navigation_view_contact_to_navigation_update_fragment"
+            app:destination="@id/navigation_update_fragment" />
+        <action
+            android:id="@+id/action_navigation_view_contact_to_navigation_groups3"
+            app:destination="@id/navigation_groups" />
+        <action
+            android:id="@+id/action_navigation_view_contact_to_navigation_groups4"
+            app:destination="@id/navigation_groups" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_groups"
+        android:name="com.example.android.contact.ui.fragment.GroupsFragment"
+        android:label="Groups"
+        tools:layout="@layout/fragment_groups" >
+        <action
+            android:id="@+id/action_navigation_groups_to_navigation_view_group"
+            app:destination="@id/navigation_view_group" />
+        <action
+            android:id="@+id/action_navigation_groups_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_update_fragment"
+        android:name="com.example.android.contact.ui.fragment.UpdateContactFragment"
+        android:label="fragment_update_contact"
+        tools:layout="@layout/fragment_update_contact" >
+        <argument
+            android:name="currentContact"
+            app:argType="com.example.android.contact.db.Contact" />
+        <action
+            android:id="@+id/action_updateContactFragment_to_navigation_contact"
+            app:destination="@id/navigation_all_contact" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.android.contact.ui.fragment.FavoriteFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favoriteFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_navigation_view_contact"
+            app:destination="@id/navigation_view_contact" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_view_group"
+        android:name="com.example.android.contact.ui.fragment.ViewGroupFragment"
+        android:label="Group"
+        tools:layout="@layout/fragment_view_group">
+        <argument
+            android:name="string"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_view_group_to_navigation_view_contact"
+            app:destination="@id/navigation_view_contact" />
+        <action
+            android:id="@+id/action_navigation_view_group_to_navigation_groups"
+            app:destination="@id/navigation_groups" />
+    </fragment>
+    <fragment
+        android:id="@+id/naviagion_persona"
+        android:name="com.example.android.contact.ui.fragment.PersonalFragment"
+        android:label="fragment_personal"
+        tools:layout="@layout/fragment_personal" >
+        <action
+            android:id="@+id/action_personalFragment_to_navigation_view_contact"
+            app:destination="@id/navigation_view_contact" />
+        <action
+            android:id="@+id/action_personalFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+</navigation>

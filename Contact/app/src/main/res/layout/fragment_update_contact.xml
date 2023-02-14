@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CDE8D9"
+    android:backgroundTint="#DAEAD5"
+    tools:context=".ui.fragment.UpdateContactFragment">
+
+    <ImageView
+        android:id="@+id/add_images"
+        android:layout_width="203dp"
+        android:layout_height="121dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_baseline_person_24" />
+
+    <ImageView
+        android:id="@+id/add_name_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="@+id/add_name"
+        app:layout_constraintEnd_toStartOf="@+id/add_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_name"
+        app:srcCompat="@drawable/ic_baseline_person_24"
+        tools:ignore="ImageContrastCheck" />
+
+    <EditText
+        android:id="@+id/add_name"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="name"
+        android:gravity="center_vertical"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:paddingStart="20dp"
+        android:textColorHint="#558B2F"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_phone_no1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/add_name_image"
+        app:layout_constraintTop_toBottomOf="@+id/add_images"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/add_phone_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/add_phone_no1"
+        app:layout_constraintEnd_toStartOf="@+id/add_phone_no1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_phone_no1"
+        app:srcCompat="@drawable/ic_baseline_call_24"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+    <EditText
+        android:id="@+id/add_phone_no1"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:hint="@string/phone_no"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:paddingStart="20dp"
+        android:textColorHint="#558B2F"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_phone_no2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/add_name"
+        app:layout_constraintTop_toBottomOf="@+id/add_name"
+        tools:ignore="RtlSymmetry,TextFields" />
+
+    <EditText
+        android:id="@+id/add_phone_no2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
+        android:gravity="center_vertical"
+        android:hint="@string/phone_no_optional"
+        android:inputType="number"
+        android:paddingStart="20dp"
+        android:textColorHint="#558B2F"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_phone_no3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/add_phone_no1"
+        app:layout_constraintTop_toBottomOf="@+id/add_phone_no1"
+        tools:ignore="RtlSymmetry,TextFields" />
+
+    <EditText
+        android:id="@+id/add_phone_no3"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
+        android:gravity="center_vertical"
+        android:hint="@string/phone_no_optional"
+        android:inputType="number"
+        android:paddingStart="20dp"
+        android:textColorHint="#558B2F"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/add_phone_no2"
+        app:layout_constraintTop_toBottomOf="@+id/add_phone_no2"
+        tools:ignore="RtlSymmetry,TextFields" />
+
+    <EditText
+        android:id="@+id/add_email"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="10dp"
+        android:textColorHint="#3C8A05"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_dob"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/add_phone_no3"
+        app:layout_constraintTop_toBottomOf="@+id/add_phone_no3"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/add_email_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="@+id/add_email"
+        app:layout_constraintEnd_toStartOf="@+id/add_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_email"
+        app:layout_constraintVertical_bias="0.466"
+        app:srcCompat="@drawable/ic_baseline_email_24"
+        tools:ignore="ImageContrastCheck" />
+
+    <EditText
+        android:id="@+id/add_dob"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/add_email"
+        app:layout_constraintTop_toBottomOf="@+id/add_email" />
+
+    <ImageView
+        android:id="@+id/add_dob_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="@+id/add_dob"
+        app:layout_constraintEnd_toStartOf="@+id/add_dob"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_dob"
+        app:srcCompat="@drawable/ic_baseline_calendar_today_24"
+        tools:ignore="ImageContrastCheck" />
+
+    <Spinner
+        android:id="@+id/add_group"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:entries="@array/options"
+        android:textColorHint="#558B2F"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/add_dob"
+        app:layout_constraintTop_toBottomOf="@+id/add_dob" />
+
+    <ImageView
+        android:id="@+id/add_group_image"
+        android:layout_width="49dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="@id/add_group"
+        app:layout_constraintEnd_toStartOf="@+id/add_group"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_group"
+        app:srcCompat="@drawable/ic_baseline_groups_24"
+        tools:ignore="ImageContrastCheck" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ok"
+        android:layout_width="52dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="64dp"
+        android:background="#0C0C0C"
+        android:clickable="true"
+        android:contentDescription="@string/todo"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_check_24"
+        app:backgroundTint="#6CE3A1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Switch
+        android:id="@+id/switch_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:minHeight="48dp"
+        android:text="@string/fav"
+        app:layout_constraintBottom_toTopOf="@+id/add_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/add_images"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

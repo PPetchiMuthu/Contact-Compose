@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B7D5C4"
+    tools:context=".ui.fragment.HomeFragment">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_home"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#4C4C4C"
+        app:cardBackgroundColor="#EBFFF4"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/me"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@string/me"
+            android:textSize="45sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="70dp"
+            android:autofillHints=""
+            android:background="@color/black"
+            android:enabled="false"
+            android:inputType="text"
+            tools:ignore="LabelFor">
+
+        </EditText>
+
+        <ImageView
+            android:id="@+id/image_view_home"
+            android:layout_width="96dp"
+            android:layout_height="89dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="90dp"
+            android:contentDescription="@string/todo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/images" />
+
+        <TextView
+            android:id="@+id/my_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/varun_dinesh"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/my_phone_no"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/_9789263997"
+            android:textSize="20sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_personal"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#EBFFF4"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_home">
+
+        <TextView
+            android:id="@+id/text_personal"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:paddingStart="20dp"
+            android:text="@string/personal_contact"
+            android:textSize="28sp"
+            tools:ignore="RtlSymmetry" />
+
+        <ImageView
+            android:id="@+id/image_personal"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/todo"
+            app:srcCompat="@drawable/ic_baseline_person_24" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_fav"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#EBFFF4"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_personal">
+
+        <TextView
+            android:id="@+id/text_fav"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:paddingStart="20dp"
+            android:text="@string/favorites"
+            android:textSize="35sp"
+            tools:ignore="RtlSymmetry" />
+
+        <ImageView
+            android:id="@+id/image_fav"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/todo"
+            app:srcCompat="@drawable/ic_baseline_favorite_24" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_groups"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#EBFFF4"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_fav">
+
+        <TextView
+            android:id="@+id/text_group"
+            android:layout_width="250dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:paddingStart="20dp"
+            android:text="@string/groups"
+            android:textSize="35sp"
+            tools:ignore="RtlSymmetry" />
+
+        <ImageView
+            android:id="@+id/image_group"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/todo"
+            app:srcCompat="@drawable/ic_baseline_groups_24" />
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

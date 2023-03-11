@@ -3,13 +3,15 @@ package com.example.contact.use_case
 import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.provider.ContactsContract.CommonDataKinds.Email
 import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.provider.ContactsContract.Contacts
 import com.example.contact.model.Contact
+import java.io.ByteArrayOutputStream
 
-class GetContactsUseCase() {
+class GetContactsUseCase {
     operator fun invoke(context: Context): List<Contact> {
         return getContacts(context)
     }
@@ -81,11 +83,14 @@ class GetContactsUseCase() {
                     photoUri,
                     true
                 )
-                val photoBitmap = if (inputStream != null) {
+                val bitmap = if (inputStream != null) {
                     BitmapFactory.decodeStream(inputStream)
                 } else {
                     null
                 }
+                val outputStream = ByteArrayOutputStream()
+                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                val photoBytes = outputStream.toByteArray()
 
                 // Add the contact to the list
                 contactList.add(
@@ -94,7 +99,7 @@ class GetContactsUseCase() {
                         name,
                         phoneNumber,
                         emailAddress,
-                        photoBitmap,
+                        photoBytes,
                         isFavorite
                     )
                 )
@@ -103,6 +108,4 @@ class GetContactsUseCase() {
         cursor?.close()
         return contactList
     }
-
-
 }

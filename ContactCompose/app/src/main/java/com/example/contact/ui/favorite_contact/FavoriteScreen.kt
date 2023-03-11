@@ -1,5 +1,6 @@
 package com.example.contact.ui.favorite_contact
 
+import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,19 +16,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.contact.R
 import com.example.contact.model.Contact
 import com.example.contact.ui.all_contact_screen.components.BottomSheetElement
+import com.example.contact.ui.all_contact_screen.components.ContactViewModel
+import com.example.contact.ui.util.DefaultImage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FavoriteScreen(viewModel: FavoriteViewModel = hiltViewModel()) {
-    val contactList = viewModel.contactsList
+fun FavoriteScreen(viewModel: ContactViewModel) {
+    val contactListState by viewModel.favoriteContactsList.collectAsState()
+    val contactList: List<Contact> = contactListState
     var bottomSheetVisible by remember { mutableStateOf(false) }
     val skipHalfExpanded by remember { mutableStateOf(false) }
     val bottomSheetState = rememberSheetState(skipHalfExpanded = skipHalfExpanded)
@@ -58,9 +58,7 @@ fun FavoriteScreen(viewModel: FavoriteViewModel = hiltViewModel()) {
                 RoundedImage(contact = contacts, onContactClick = {
                     contact.value = contacts
                     bottomSheetVisible = true
-                }
-
-                )
+                })
             }
         }
     }
@@ -79,7 +77,6 @@ fun FavoriteScreen(viewModel: FavoriteViewModel = hiltViewModel()) {
 
 @Composable
 fun RoundedImage(contact: Contact, modifier: Modifier = Modifier, onContactClick: () -> Unit) {
-
     Box(modifier = modifier
         .fillMaxWidth()
         .clip(RoundedCornerShape(16.dp))
@@ -92,25 +89,21 @@ fun RoundedImage(contact: Contact, modifier: Modifier = Modifier, onContactClick
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             contact.photo?.let {
-                Image(
-                    bitmap = it.asImageBitmap(),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(118.dp)
-                        .clip(CircleShape)
-                        .padding(16.dp),
-                    contentScale = ContentScale.Crop
-                )
-            } ?: run {
-                Image(
-                    imageVector = ImageVector.vectorResource(id = R.drawable.default_image),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(118.dp)
-                        .clip(CircleShape)
-                        .padding(16.dp)
-                )
+                val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
+                bitmap?.let {
+                    Image(
+                        bitmap = bitmap.asImageBitmap(),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(118.dp)
+                            .clip(CircleShape),
+                        contentScale = ContentScale.Crop
+                    )
+                } ?: run {
+                    DefaultImage(size = 118)
+                }
+            }?: run {
+                DefaultImage(size = 118)
             }
             Text(
                 text = contact.name,
@@ -119,4 +112,3 @@ fun RoundedImage(contact: Contact, modifier: Modifier = Modifier, onContactClick
         }
     }
 }
-

@@ -6,7 +6,7 @@ import android.net.Uri
 import android.provider.ContactsContract
 import android.util.Log
 
-class DeleteUseCase() {
+class DeleteUseCase {
     @SuppressLint("Range")
     operator fun invoke(context: Context, phoneNumber: String) {
 

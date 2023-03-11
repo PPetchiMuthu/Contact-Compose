@@ -1,6 +1,10 @@
 package com.example.contact.ui.all_contact_screen.components
 
 import android.annotation.SuppressLint
+import android.graphics.BitmapFactory
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,14 +27,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.example.contact.R
 import com.example.contact.model.Contact
-import com.example.contact.ui.all_contact_screen.AllContactScreenViewModel
+import com.example.contact.ui.util.BottomBarScreen
+import com.example.contact.ui.util.DefaultImage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint(
@@ -40,23 +44,27 @@ import com.example.contact.ui.all_contact_screen.AllContactScreenViewModel
 )
 @Composable
 fun AllContactScreen(
-    viewModel: AllContactScreenViewModel = hiltViewModel()
+    viewModel: ContactViewModel,
+    navController: NavHostController
 ) {
-    val contactList = viewModel.contactsList
-    val context = LocalContext.current
+    val contactListState by viewModel.contactsList.collectAsState()
+    val contactList: List<Contact> = contactListState.data ?: emptyList()
     var bottomSheetVisible by remember { mutableStateOf(false) }
     val skipHalfExpanded by remember { mutableStateOf(false) }
     val bottomSheetState = rememberSheetState(skipHalfExpanded = skipHalfExpanded)
     val contact = remember {
         mutableStateOf<Contact?>(null)
     }
-    Scaffold(floatingActionButton = {
-        FloatingActionButton(onClick = {
-
-        }) {
-            Icon(imageVector = Icons.Default.Add, contentDescription = "All Contacts")
-        }
-    }) {
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(onClick = {
+                navController.navigate(BottomBarScreen.AddEdit.route)
+            }) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "All Contacts")
+            }
+        },
+        modifier = Modifier.padding(bottom = 80.dp)
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -81,7 +89,7 @@ fun AllContactScreen(
                     ContactCard(contact = contacts, onDeleteClick = {
 //                        viewModel.deleteContact(context, contacts.phoneNumber.toString())
                     }, onContactClick = {
-                        contact.value = contacts++++++++++++++
+                        contact.value = contacts
                         bottomSheetVisible = true
                     })
                 }
@@ -108,23 +116,21 @@ fun BottomSheetElement(contact: Contact) {
             modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
         ) {
             contact.photo?.let {
-                Image(
-                    bitmap = it.asImageBitmap(),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(54.dp)
-                        .clip(CircleShape)
-                )
-            } ?: run {
-                Image(
-                    imageVector = ImageVector.vectorResource(id = R.drawable.default_image),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(54.dp)
-                        .clip(CircleShape)
-                )
+                val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
+                bitmap?.let {
+                    Image(
+                        bitmap = bitmap.asImageBitmap(),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(54.dp)
+                            .clip(CircleShape)
+                    )
+                } ?: run {
+                    DefaultImage(size = 54)
+                }
+            }?: run {
+                DefaultImage(size = 54)
             }
             Spacer(modifier = Modifier.width(16.dp))
             Text(
@@ -202,23 +208,21 @@ fun ContactCard(
                 .padding(12.dp)
         ) {
             contact.photo?.let {
-                Image(
-                    bitmap = it.asImageBitmap(),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(54.dp)
-                        .clip(CircleShape)
-                )
-            } ?: run {
-                Image(
-                    imageVector = ImageVector.vectorResource(id = R.drawable.default_image),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(54.dp)
-                        .clip(CircleShape)
-                )
+                val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
+                bitmap?.let {
+                    Image(
+                        bitmap = bitmap.asImageBitmap(),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(54.dp)
+                            .clip(CircleShape)
+                    )
+                } ?: run {
+                    DefaultImage(size = 54)
+                }
+            }?: run {
+                DefaultImage(size = 54)
             }
             Text(
                 text = contact.name,
